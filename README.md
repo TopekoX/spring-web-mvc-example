@@ -8,4 +8,6 @@
 * Maven 3.5
 
 ## List example
-* Spring MVC Hello World
+* Spring MVC Hello World XML Configuration
+* Spring MVC Hello World Annotation Configuration
+* Spring MVC Hibernate XML Configuration
