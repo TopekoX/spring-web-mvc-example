@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+	layout:decorator="layout/template">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<div layout:fragment="content">
+		<h3>Tabel Person</h3>
+		<div style="overflow-x:auto; width:80%">
+			<table>
+				<tr>
+					<th>ID</th>
+					<th>Nama</th>
+				</tr>
+				<tr th:each="n : ${person}">
+					<td th:text="${n.id}" />
+					<td th:text="${n.nama}" />
+				</tr>
+			</table>
+		</div>
+	</div>
+</body>
+</html>
