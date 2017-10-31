@@ -16,7 +16,7 @@
 	<!-- load file properties -->
 	<context:property-placeholder location="classpath:application.properties" />
 	<!-- lokasi controller -->
-	<context:component-scan base-package="com.timposu.controller" />
+	<context:component-scan base-package="com.timposu" />
 
 	<!-- Enable MVC -->
 	<mvc:annotation-driven />

@@ -9,4 +9,8 @@ public interface PersonDao {
 	public void save(Person person);
 	
 	public List<Person> findAll();
+	
+	public Person findOne(Integer id);
+	
+	public void delete(Integer id);
 }
