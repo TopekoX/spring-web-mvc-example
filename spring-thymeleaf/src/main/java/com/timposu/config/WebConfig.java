@@ -8,7 +8,8 @@ import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 import org.thymeleaf.spring4.SpringTemplateEngine;
 import org.thymeleaf.spring4.templateresolver.SpringResourceTemplateResolver;
-
+import org.thymeleaf.spring4.view.ThymeleafViewResolver;
+import org.thymeleaf.templatemode.TemplateMode;
 import nz.net.ultraq.thymeleaf.LayoutDialect;
 
 @Configuration
@@ -19,15 +20,15 @@ public class WebConfig extends WebMvcConfigurerAdapter {
 	@Override
 	public void addResourceHandlers(ResourceHandlerRegistry registry) {
 		registry.addResourceHandler("/static/**")
-			.addResourceLocations("/static");
-		super.addResourceHandlers(registry);
+			.addResourceLocations("/static/");
 	}
 	
 	@Bean
 	public SpringResourceTemplateResolver templateResolver() {
 		SpringResourceTemplateResolver templateResolver = new SpringResourceTemplateResolver();
-		templateResolver.setPrefix("/WEB-INF/template");
+		templateResolver.setPrefix("/WEB-INF/template/");
 		templateResolver.setSuffix(".html");
+		templateResolver.setTemplateMode(TemplateMode.HTML);
 		templateResolver.setCacheable(false);
 		return templateResolver;
 	}
@@ -39,5 +40,13 @@ public class WebConfig extends WebMvcConfigurerAdapter {
 		templateEngine.setEnableSpringELCompiler(true);
 		templateEngine.addDialect(new LayoutDialect());
 		return templateEngine;
+	}
+	
+	@Bean
+	public ThymeleafViewResolver viewResolver() {
+	    ThymeleafViewResolver viewResolver = new ThymeleafViewResolver();
+	    viewResolver.setTemplateEngine(templateEngine());
+	    viewResolver.setOrder(1);
+	    return viewResolver;
 	}
 }

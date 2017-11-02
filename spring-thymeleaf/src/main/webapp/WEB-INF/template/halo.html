@@ -1,11 +1,15 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:th="http://www.thymeleaf.org">
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+	layout:decorator="layout/template">
 <head>
 <meta charset="UTF-8" />
 <title>Demo Spring Thymeleaf</title>
 </head>
 <body>
+<div layout:fragment="content">
 	<h1>Waktu <span th:text="${waktu}">Halo</span></h1>
+</div>
 </body>
 </html>
