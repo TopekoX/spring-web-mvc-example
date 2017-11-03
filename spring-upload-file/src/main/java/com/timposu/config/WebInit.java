@@ -2,6 +2,7 @@ package com.timposu.config;
 
 import java.io.File;
 
+import javax.servlet.MultipartConfigElement;
 import javax.servlet.ServletRegistration.Dynamic;
 
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
@@ -17,7 +18,6 @@ public class WebInit extends AbstractAnnotationConfigDispatcherServletInitialize
 
 	@Override
 	protected Class<?>[] getServletConfigClasses() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
@@ -30,5 +30,10 @@ public class WebInit extends AbstractAnnotationConfigDispatcherServletInitialize
 	protected void customizeRegistration(Dynamic registration) {
 		File uploadDir = new File(System.getProperty("java.io.tmpdir"));
 		
+		MultipartConfigElement multipartConfigElement =
+				new MultipartConfigElement(uploadDir.getAbsolutePath(),
+						MAX_SIZE_FILE, MAX_SIZE_FILE * 2, MAX_SIZE_FILE / 2);
+		
+		registration.setMultipartConfig(multipartConfigElement);
 	}
 }
