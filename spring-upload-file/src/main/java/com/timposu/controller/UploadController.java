@@ -48,6 +48,7 @@ public class UploadController {
 			
 			redirectAttributes.addFlashAttribute("message", "Uploaded successfully " + 
 					file.getOriginalFilename());
+			redirectAttributes.addFlashAttribute("filename", file.getOriginalFilename());			
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
